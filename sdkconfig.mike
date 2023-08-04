@@ -10,5 +10,5 @@ CONFIG_ION_DIVIDER_SCALE=11000
 # Consider 24.8V (nimh 21s) empty
 CONFIG_ION_ADC_EMPTY_MV=22500
 
-# Consider 29.4V (4.2V/cell for 7s) full
+# Consider 29.4V (nimh 21s) full
 CONFIG_ION_ADC_FULL_MV=26700
