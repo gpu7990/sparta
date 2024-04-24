@@ -90,20 +90,7 @@ void handleTurnMotorOnState(ion_state * state) {
         messageType response = {};
         exchange(cmdReq(MSG_DISPLAY, MSG_BMS, CMD_GET_SERIAL), &response);
         memcpy(displaySerial, response.payload, 8);
-    } else if(state->step == nextStep + 3) {
-        // Get serial progammed in motor slot 2
-        messageType response = {};
-        uint8_t payload[] = {0x40, 0x5c, 0x00};
-        exchange(cmdReq(MSG_MOTOR, MSG_BMS, CMD_GET_DATA, payload, sizeof(payload)), &response);
-        if(response.payload[3] == 8) {
-            memcpy(motorSlot2Serial, response.payload + 4, 8);
-        }
-        if(memcmp(displaySerial, motorSlot2Serial, 8) == 0) {
-            // Serial already matched.
-            toMotorOnState(state);
-            return;
-        }
-    } 
+    }
 #endif
         toMotorOnState(state);
         return;
