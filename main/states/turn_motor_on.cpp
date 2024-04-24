@@ -99,7 +99,7 @@ void handleTurnMotorOnState(ion_state * state) {
             memcpy(motorSlot2Serial, response.payload + 4, 8);
         }
         if(memcmp(displaySerial, motorSlot2Serial, 8) == 0) {
-            // Serial already matched, no need to change it.
+            // Serial already matched.
             toMotorOnState(state);
             return;
         }
