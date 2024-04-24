@@ -90,8 +90,6 @@ void handleTurnMotorOnState(ion_state * state) {
         messageType response = {};
         exchange(cmdReq(MSG_DISPLAY, MSG_BMS, CMD_GET_SERIAL), &response);
         memcpy(displaySerial, response.payload, 8);
-    }
-#endif
-        toMotorOnState(state);
-        return;
-    }
+    } 
+    state->step++;
+}
