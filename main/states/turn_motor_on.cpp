@@ -85,7 +85,6 @@ void handleTurnMotorOnState(ion_state * state) {
     } else if(state->step == nextStep + 1) {
         motorUpdate();
         startMotorUpdates();
-#if CONFIG_ION_CU3
     } else if(state->step == nextStep + 2) {
         messageType response = {};
         exchange(cmdReq(MSG_DISPLAY, MSG_BMS, CMD_GET_SERIAL), &response);
