@@ -85,6 +85,7 @@ void handleTurnMotorOnState(ion_state * state) {
     } else if(state->step == nextStep + 1) {
         motorUpdate();
         startMotorUpdates();
+#if CONFIG_ION_CU2 || CONFIG_ION_CU3
     } else if(state->step == nextStep + 2) {
         messageType response = {};
         exchange(cmdReq(MSG_DISPLAY, MSG_BMS, CMD_GET_SERIAL), &response);
@@ -103,6 +104,12 @@ void handleTurnMotorOnState(ion_state * state) {
             return;
         }
     } else if(state->step == nextStep + 4) {
+        // Program serial in motor slot 2
+        uint8_t payload[] = {0x40, 0x5c, 0x00, 0x08, 0x08, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+        memcpy(payload + 5, displaySerial, 8);
+        messageType response = {};
+        exchange(cmdReq(MSG_MOTOR, MSG_BMS, CMD_PUT_DATA, payload, sizeof(payload)), &response);
+#endif
         toMotorOnState(state);
         return;
     }
