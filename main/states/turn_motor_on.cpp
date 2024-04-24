@@ -95,5 +95,4 @@ void handleTurnMotorOnState(ion_state * state) {
         toMotorOnState(state);
         return;
     }
-    state->step++;
 }
