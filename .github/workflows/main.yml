@@ -35,6 +35,9 @@ jobs:
           - target: esp32
             display: cu3
             custom: dvjcodec
+          - target: esp32c3
+            display: cu2
+            custom: supermini
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
@@ -58,7 +61,7 @@ jobs:
         target: ${{ matrix.target }}
         path: ''
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: firmware-${{ matrix.target }}-${{ matrix.display }}-${{ matrix.custom }}
         path: |
