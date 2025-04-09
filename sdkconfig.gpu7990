@@ -4,8 +4,8 @@ CONFIG_ION_RELAY_PIN_INVERTED=n
 # The scale of the divider, times 1000
 CONFIG_ION_DIVIDER_SCALE=11000
 
-# Consider 24V (nimh 21s) empty
-CONFIG_ION_ADC_EMPTY_MV=24000
+# Consider 30V (li ion) empty
+CONFIG_ION_ADC_EMPTY_MV=30000
 
-# Consider 28.4V (nimh 21s) full
-CONFIG_ION_ADC_FULL_MV=28400
+# Consider 41.5V (10s) full
+CONFIG_ION_ADC_FULL_MV=41500
